@@ -1,0 +1,24 @@
+{% extends "baseCV.html" %}
+{% block title %} Fct {% endblock %}
+
+{% block content %}
+
+
+
+	{% for item in cats %}
+    	
+    	<div class="item">
+    		<div class="item-header"> <h3>{{ item.name }}</h3></div>
+    		{% for s in item.skills %}
+    			<div class="sk">
+    				<span> {{s.name}} - {{s.nivel}}</span> 
+    			</div>
+    			
+    		{% endfor %} 
+    	</div>
+
+	{% endfor %}
+
+
+       
+{% endblock %}

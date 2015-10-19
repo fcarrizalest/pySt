@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+<div class="newForm"> 
+	<form method="POST" action="{{url_for('.submit_edit', id_wp=wp.id)}}">
+
+
+{{ form.csrf_token }}
+
+{{ form.name.label }} {{ form.name(size=20) }}
+
+
+	<input type="submit" >
+	</form>
+
+</div>
+
+
+<div class="Grps">
+	<fieldset>
+		<legend> Groups </legend>
+		<form method="POST" action="{{url_for('.submit_edit_grps', id_wp=wp.id)}}">
+			{{form.csrf_token}}
+			{{form_grps.groups}}
+
+ 
+			<input type="submit" >
+		</form>
+	</fieldset>
+
+</div>
+
+
+<div class="Status">
+	<fieldset>
+		<legend> Status </legend>
+
+
+		{% for st in status_by_wp%}
+		<li> <a href="{{url_for('.status_type',id_wp=wp.id,type=st.etype)}}" > {{st.etype}} </a> - {{st.name}}</li>
+		{% endfor %}
+		
+		<form action="{{url_for('.status', id_wp=wp.id)}}" method="POST">
+			{{ status_form.csrf_token }}
+
+			{{status_form.name}}
+			{{status_form.etype}}
+			<input type="submit"/>
+		
+		</form>
+	</fieldset>
+
+</div>
+
+
+<div class="tags">
+
+	<fieldset>
+		<legend>Tags</legend>
+
+
+		{% for tag in tagsT %}
+
+		<li>  {{tag.id}} - {{tag.id_wp}} - {{tag.name}}  </li> 
+
+		{% endfor %}
+
+		<form action="{{url_for('.submit_edit_tags', id_wp=wp.id)}}" method="POST">
+			{{tags_Form.csrf_token}}
+
+
+			{{tags_Form.id_wp}}
+			{{tags_Form.name.label}} {{tags_Form.name}}
+
+			<input type="submit">
+
+		</form>
+
+	</fieldset>
+</div>
+
+
+{% endblock %}

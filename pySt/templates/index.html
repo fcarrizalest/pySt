@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+<div class="search">
+
+	<form class="frm_search" action="{{url_for('.index')}}" method="POST">
+
+{{ form.csrf_token }}
+
+{{ form.wps.label }} {{ form.wps }}
+	
+{{form.tags.label}} {{form.tags}}	
+
+{{form.type.label}} {{form.type}}
+
+{{form.q.label }} {{form.q}}
+
+	<input type="submit">
+	</form>
+</div>
+
+<div class="toolbar">
+
+	<ul>	
+		{% for st in status%}
+			
+			<li > <a href="new/{{st.etype}}?id_wp={{st.id_wp}}"> New {{st.etype}}  </a></li>
+
+		{% endfor %}
+	</ul>
+
+</div> 
+
+
+
+<div class="list">
+	{% for  entity in entities%}
+		<div class="row">
+			<div style="width:50px"> {{entity.id}} </div>
+			<div style="width:150px"> {{entity.etype}} </div>
+			<div><a target="_blank" href="{{url_for('.show_entity',etype=entity.etype, id=entity.id)}}">  {{entity.name}}  </a> </div>
+			
+			<div> {{entity.created_at}}</div>
+			<div> 
+
+				{% for f in  entity.fields.all()%}
+				 	
+				 	{% if  f.value %}
+				 	<li> {{f.name}}  - {{f.value}}  </li>
+				 	{%endif%}
+				{% endfor %}
+			</div>
+			<div> <a href="{{url_for('.del_entity',id=entity.id)}}"> delete </a>  </div>
+		</div>
+	{% endfor %}
+
+</div>
+{% endblock %}

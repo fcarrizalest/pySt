@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="toolbar">
+	<ul>
+{% for st in types%}
+	
+	{% if st.etype != 'client' %}
+	<li >
+
+		
+	<a href="{{url_for('.new_entity', etype=st.etype , id_wp=st.id_wp , id_parent=e.id)}}"> New  {{st.etype}} </a></li>
+	{%endif%}		
+
+
+{%endfor%}
+</ul>
+
+</div>
+
+<a href="{{url_for('.edit_entity',etype=e.etype,id=e.id,id_wp=e.id_wp)}}"> Edit </a>
+
+<br>	
+	{{e.id}} 
+
+<br>
+	{{e.id_wp}}
+<br>
+	{{e.name}}
+<br>
+{{e.etype}}
+<br>
+
+
+
+{% for f in e.fields.all()%}
+
+ 	{{f.name}}: {{f.value}} <br>
+
+{%endfor%}
+
+
+{% for child in e.childs %}
+ 	
+ 	<div><a href="{{url_for('.show_entity', etype=child.etype  , id =child.id )}}">  {{child.name}} </a>- {{child.etype }} </div>
+
+{%endfor%}
+
+{% if e.etype == 'client' %}
+
+
+ 
+
+
+
+
+{%endif%}
+
+
+
+{% endblock %}

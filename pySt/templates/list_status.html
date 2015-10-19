@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="newform">
+	<form action="{{url_for('.status', id_wp=wp.id)}}" method="POST">
+			{{ form.csrf_token }}
+
+			{{form.name}}
+			<input type="hidden" name="etype" value="{{type}}">
+			<input type="submit"/>
+		
+		</form>
+</div>
+<div class="list">  
+{% for st in status %}
+
+		
+			<div class="row">
+				<div>{{st.name}} </div>
+
+				<div> 
+
+<!--
+					<select name="type">
+
+						{% for ste in status %}
+						<option value="{{ste.id}}"> {{ste.name}} </option>
+						{% endfor %}
+					</select> -->
+				</div>
+
+				<div> <a href="{{url_for('.delete_status', id_wp = wp.id ,type=type,id=st.id)}}" >  Borrar </a> </div>
+			</div>
+		
+
+{% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% import 'forms.html' as fields %}
+	
+	<form action="{{url_for('.submit_new_entity',etype=etype)}}" method="POST" >
+
+		<div>{{ form.csrf_token }}</div>
+
+		<div>{{ form.id_wp }}</div>
+		{% if form.id %}
+			<div> {{form.id}}<div>
+		{%endif%}
+
+		{% if id_parent %}
+		<div> <input type="hidden" name="id_parent" value="{{id_parent}}" /> </div>
+		{% endif%}
+		<div>	{{form.name.label}}{{ form.name }}</div>
+
+		<div>	{{form.etype}}</div>
+
+		<div>	{{form.status.label}}{{form.status}}</div>
+
+		{{fields.input(form,etype)}}
+
+
+
+<input type="submit"> 
+
+
+</form>
+
+
+{% endblock %}

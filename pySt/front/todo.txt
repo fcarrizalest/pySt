@@ -1,0 +1,8 @@
+equipo
+
+
+Cuentas
+
+  type , name , ruta, usuario, contraseña  , host , base_datos , puerto
+
+

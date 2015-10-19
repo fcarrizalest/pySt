@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+	<div class="newForm"> 
+	<form method="POST" action="{{url_for('.submit')}}">
+
+
+{{ form.csrf_token }}
+
+{{ form.name.label }} {{ form.name(size=20) }}
+
+
+		<input type="submit" >
+	</form>
+
+</div>
+
+
+<div class="list">
+
+{% for g in groups %}
+	<div class="row">
+		<div> <a href="{{url_for('.show_group', id=g.id)}}" > {{ g.name }}  </a> </div>
+		<div>  <a href="{{url_for('.del_group', id=g.id)}}" > Borrar  </a>  </div>
+	</div>
+{% endfor %}
+
+</div>
+
+
+{% endblock %}

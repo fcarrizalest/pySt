@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% block head %}
+    
+    <title>{% block title %}{% endblock %} - My Webpage</title>
+    {% endblock %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/normalize.css') }}">
+    
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/estilos.css') }}">
+
+    
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/font-awesome.css') }}">
+
+</head>
+<body> 
+
+    <header class="header">
+        <div class="container"> 
+            <div class="profile-content"> 
+                
+                <div class="profile">
+                       
+                    <h1 class="name">Francisco Carrizales</h1> 
+                    <h2 class="desc">Backend Developer(Php/Python)</h2>
+                    <div class="social">
+                    <div><a target="_blank" href="https://twitter.com/fcarrizalest"><i class="fa fa-twitter"></i></a></div> 
+
+                    <div><a  target="_blank" href="https://plus.google.com/+FranciscoCarrizales"><i class="fa fa-google-plus"></i></a></div> 
+
+
+                    <div><a target="_blank" href="https://github.com/fcarrizalest"><i class="fa fa-github-alt"></i></a></div> 
+                    </div>
+                
+                </div>
+               
+            </div><!--//profile--> 
+
+            <div class="menu" >
+               <!-- <a class="button" href="#profile"> Proyectos </a> -->
+
+                <a class="button" href="mailto:fcarrizalest@gmail.com"> Contacto </a>
+            </div>
+            </div><!--//container--> 
+         </header>
+
+        <div id="twocol">
+            <div class="containerD">
+                <div class="description">
+                    <h2> Resumen </h2>
+                    <p> 
+Me considero una persona autodidacta, con pasion por implementar nuevas tecnologias o metodologias en mis desarrollos. 
+
+</p>
+<p>
+En el aspecto laborar puedo decir, que una de las actividades que más disfruto son el diseño de nuevos Sistemas.
+
+                    </p>
+
+                </div> 
+            </div>
+            <div id="content">
+
+                {% block content %}{% endblock %}
+
+            </div>
+        </div>
+    <div id="footer">
+        {% block footer %}
+       
+        {% endblock %}
+    </div>
+</body>
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+ 
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+
+  (function() {
+    var u="//189.152.239.11/~fcarrizalest/piwik/";
+    _paq.push(["setCustomVariable", 1, "type", "a", "visit"]);
+ 
+  _paq.push(["setCampaignNameKey", "Cam1"]);
+  _paq.push(["setCampaignKeywordKey", "cam1Test"]);
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', 1]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//189.152.239.11/~fcarrizalest/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
+</html>

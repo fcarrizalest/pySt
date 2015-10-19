@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="newForm"> 
+	<form method="POST" action="{{url_for('.submit_edit', id=grp.id)}}">
+
+
+{{ form.csrf_token }}
+
+{{ form.name.label }} {{ form.name(size=20) }}
+
+
+	<input type="submit" >
+	</form>
+
+</div>
+
+Usuarios:
+
+{% for user in grp.user.all() %}
+
+<li>{{user.username}}</li>
+
+{% endfor %}
+
+
+
+
+{% endblock %}

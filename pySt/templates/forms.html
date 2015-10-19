@@ -1,0 +1,82 @@
+{% macro input(form , etype ) -%}
+	
+	
+	{{ etype }}
+
+	{%if etype == 'client'%}
+
+	<div>	{{form.address.label}}{{form.address}}</div>
+
+	<div>	{{form.phone.label}}{{form.phone}}</div>
+		
+
+	<div>	{{form.first_name.label }}{{form.first_name}}  </div>
+	<div>	{{form.last_name.label }}{{form.last_name}} </div>
+	<div>	{{form.email.label }}{{form.email}} </div>
+
+
+	<div>  Site {{form.site}}</div>
+
+
+	{%endif%}
+
+
+	{%if etype == 'contact'%}
+
+	<div> {{form.email.label}} {{form.email}} </div>
+
+	<div> {{form.phone.label}} {{form.phone}} </div>
+
+	<div> {{form.position.label}} {{form.position}} </div>
+
+	{%endif%}
+
+
+	{%if etype == 'note'%}
+
+	<div>
+	{{form.note.label}} {{form.note(rows=10,cols=50)}} 
+
+	</div>
+	{%endif%}
+
+
+
+	{%if etype == 'phase'%}
+
+	<div>{{form.phase.label}}{{form.phase}}</div>
+	<div>{{form.type.label}}{{form.type}}</div>
+	<div>{{form.owner.label}}{{form.owner}}</div>
+	<div>{{form.planned_date_start.label}}{{form.planned_date_start}}</div>
+	<div>	{{form.planned_date_end.label}}{{form.planned_date_end}}</div>
+	<div>	{{form.real_date_start.label}}{{form.real_date_start}}</div>
+	<div>	{{form.real_date_end.label}}{{form.real_date_end}}</div>
+	<div>	{{form.name_proyect.label}}{{form.name_proyect}}</div>
+	<div>	{{form.tags.label}}{{form.tags}}</div>
+	<div>	{{form.snippet.label}}{{form.snippet}}</div>
+	<div>	{{form.goals.label}}{{form.goals}}</div>
+	<div>	{{form.budget.label}}{{form.budget}}</div>
+
+
+	{%endif%}
+
+
+	{%if etype == 'proyect'%}
+
+
+	{%endif%}
+
+
+	{%if etype == 'task'%}
+
+	<div>{{form.date_start.label}}{{form.date_start}}</div>
+	<div>	{{form.date_end.label}}{{form.date_end}}</div>
+
+	{%endif%}
+
+
+
+{%- endmacro %}
+
+
+
